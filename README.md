@@ -1,6 +1,6 @@
 # 😷 Face Mask Browser Extension
 
-An extension that puts masks on faces on the internet (only works in Chrome).
+An extension that puts masks on faces on the internet (only works for Chrome).
 
 **Beware:** This extension is a proof of concept and really slows down your browser (and also destroys several sites).
 
@@ -38,7 +38,7 @@ npm run build:chrome
 - Type `chrome://extensions` in the address bar
 - Enable the `Developer Mode` switch
 - Click `Load Unpacked Extension…`
-- Select the directory `extenion/chrome`
+- Select the directory `extenion/chrome` of this repository
 
 ## Thanks
 
