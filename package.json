@@ -1,0 +1,61 @@
+{
+  "name": "face-mask",
+  "version": "1.0.0",
+  "description": "A browser extension that puts masks on faces on the internet.",
+  "private": true,
+  "repository": "https://github.com/moklick/face-mask-browser-extension.git",
+  "author": "moklick",
+  "license": "MIT",
+  "engines": {
+    "node": ">=10 <=12"
+  },
+  "scripts": {
+    "dev:chrome": "cross-env NODE_ENV=development cross-env TARGET_BROWSER=chrome webpack --watch",
+    "dev:firefox": "cross-env NODE_ENV=development cross-env TARGET_BROWSER=firefox webpack --watch",
+    "build:chrome": "cross-env NODE_ENV=production cross-env TARGET_BROWSER=chrome webpack",
+    "build:firefox": "cross-env NODE_ENV=production cross-env TARGET_BROWSER=firefox webpack",
+    "build": "yarn run build:chrome && yarn run build:firefox"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.8.4",
+    "face-api.js": "^0.22.1",
+    "ml5": "^0.4.3",
+    "webextension-polyfill": "^0.6.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.6",
+    "@babel/plugin-proposal-object-rest-spread": "^7.8.3",
+    "@babel/plugin-transform-destructuring": "^7.8.3",
+    "@babel/plugin-transform-runtime": "^7.8.3",
+    "@babel/preset-env": "^7.8.6",
+    "autoprefixer": "^9.7.4",
+    "babel-eslint": "10.0.3",
+    "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.1.1",
+    "cross-env": "^6.0.3",
+    "css-loader": "^3.4.2",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-onepass": "^2.1.3",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-html": "^6.0.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.2",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "node-sass": "^4.13.1",
+    "postcss-loader": "^3.0.0",
+    "prettier": "^1.19.1",
+    "resolve-url-loader": "^3.1.1",
+    "sass-loader": "^8.0.2",
+    "terser-webpack-plugin": "^2.3.4",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10",
+    "webpack-extension-reloader": "^1.1.4",
+    "wext-manifest": "^2.1.0",
+    "write-webpack-plugin": "^1.1.0",
+    "zip-webpack-plugin": "^3.0.0"
+  }
+}
