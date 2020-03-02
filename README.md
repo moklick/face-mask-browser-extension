@@ -4,6 +4,11 @@ An extension that puts masks on faces on the internet (only works in Chrome).
 
 **Beware:** This extension is a proof of concept and really slows down your browser (and also destroys several sites).
 
+## Demo Video
+
+https://twitter.com/moklick/status/1234421465287680000
+
+
 ## Start
 
 You need [Node.js](https://nodejs.org) in order to modify this extension.
