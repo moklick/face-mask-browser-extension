@@ -2,11 +2,13 @@
 
 An extension that puts masks on faces on the internet (only works in Chrome).
 
-🔥🔥🔥Beware: This extension is a proof of concept and really slows down your browser (and also destroys several sites).
+**Beware:** This extension is a proof of concept and really slows down your browser (and also destroys several sites).
 
 ## Start
 
-You need [Node.js](https://nodejs.org) in order to build this extension
+You need [Node.js](https://nodejs.org) in order to modify this extension.
+
+If you just want to try it out go to: [How to load the extension](#how-to-load-the-extension)
 
 ## Installation
 
@@ -26,7 +28,7 @@ npm run dev:chrome
 npm run build:chrome
 ```
 
-## How to load the extension in your browser
+## How to load the extension
 
 - Type `chrome://extensions` in the address bar
 - Enable the `Developer Mode` switch
