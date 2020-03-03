@@ -18,6 +18,13 @@ In order to try the extension you can load the unpacked version in your Chrome b
 4. Click the `Load Unpacked Extension…` utton
 5. Select the directory `extenion/chrome` of this repository
 
+## How it works
+
+1. Check site for images and wrap them with a div
+2. Observe these wrapped images with [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
+3. When an image appears in the viewport, check if there are faces on it using [ml5js face-api](https://learn.ml5js.org/docs/#/reference/face-api)
+4. If there are faces add a canvas to the wrapper and draw the masks with this [drawMask function](https://github.com/moklick/face-mask-browser-extension/blob/master/src/ContentScript/drawMask.js)
+
 ## Development
 
 You need [Node.js](https://nodejs.org) in order to modify this extension.
