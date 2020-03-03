@@ -28,7 +28,7 @@ You need [Node.js](https://nodejs.org) in order to modify this extension.
 npm install
 ```
 
-### Development
+### Start
 
 ```
 npm run dev:chrome
