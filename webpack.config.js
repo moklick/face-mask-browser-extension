@@ -49,7 +49,7 @@ module.exports = {
 
   entry: {
     background: path.join(sourcePath, 'Background', 'index.js'),
-    contentScript: path.join(sourcePath, 'ContentScript', 'index.js')
+    contentScript: path.join(sourcePath, 'ContentScript', 'nicolascage.js')
   },
 
   output: {

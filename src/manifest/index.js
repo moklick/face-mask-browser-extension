@@ -49,7 +49,9 @@ const manifestInput = {
       matches: ['http://*/*', 'https://*/*'],
       js: ['js/contentScript.bundle.js']
     }
-  ]
+  ],
+
+  web_accessible_resources: ['/assets/cage.jpg', '/assets/joconde.jpg']
 };
 
 module.exports = manifestInput;

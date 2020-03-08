@@ -14,14 +14,16 @@ export default class DomMutationObserver {
   onMutate(cb) {
     return mutationsList => {
       for (let mutation of mutationsList) {
-        [].forEach.call(mutation.addedNodes, mutation => {
-          if (
-            (mutation.nodeName === 'IMG' || mutation.nodeName === 'PICTURE') &&
-            !mutation.classList.contains('maskedimage')
-          ) {
-            cb();
-          }
-        });
+        if (typeof mutation !== 'undefined') {
+          [].forEach.call(mutation.addedNodes, mut => {
+            if (
+              (mut.nodeName === 'IMG' || mut.nodeName === 'PICTURE') &&
+              !mut.classList.contains('maskedimage')
+            ) {
+              cb();
+            }
+          });
+        }
       }
     };
   }
