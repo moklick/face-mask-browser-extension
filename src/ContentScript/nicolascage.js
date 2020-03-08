@@ -82,7 +82,6 @@ async function onMessageResponse(res, wrapper, imgWidth, imgHeight) {
   });
   ctracker.init(pModel);
 
-  const fd = new faceDeformer();
   const img = new Image();
 
   img.onload = () => {
@@ -92,12 +91,14 @@ async function onMessageResponse(res, wrapper, imgWidth, imgHeight) {
     dummyCtx.drawImage(img, 0, 0, imgWidth, imgHeight);
 
     ctracker.start(dummyCanvas);
-    fd.init(canvas);
-    fd.load(cageImage, cageMask, pModel);
 
     setTimeout(() => {
       const pos = ctracker.getCurrentPosition();
       if (pos) {
+        const fd = new faceDeformer();
+
+        fd.init(canvas);
+        fd.load(cageImage, cageMask, pModel);
         fd.draw(pos);
         wrapper.appendChild(canvas);
       }
