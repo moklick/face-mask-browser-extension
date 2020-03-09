@@ -1,4 +1,4 @@
-import ml5 from 'ml5';
+import * as faceApi from 'face-api.js';
 import browser from 'webextension-polyfill';
 
 import drawMask from './drawMask';
@@ -6,14 +6,21 @@ import { wrap, createCanvas, setDimensions } from './domUtils';
 import ImageObserver from './ImageObserver';
 import DomMutationObserver from './DomMutationObserver';
 
-const faceapi = ml5.faceApi(
-  {
-    withLandmarks: true,
-    withDescriptors: false,
-    minConfidence: 0.7
-  },
-  onModelLoaded
-);
+const minConfidence = 0.7;
+
+const Mobilenetv1Model = 'https://raw.githubusercontent.com/justadudewhohacks/face-api.js/0.22.1/weights/ssd_mobilenetv1_model-weights_manifest.json';
+const FaceLandmarkModel = 'https://raw.githubusercontent.com/justadudewhohacks/face-api.js/0.22.1/weights/face_landmark_68_model-weights_manifest.json';
+const FaceRecognitionModel = 'https://raw.githubusercontent.com/justadudewhohacks/face-api.js/0.22.1/weights/face_recognition_model-weights_manifest.json';
+
+async function load() {
+  const SsdMobilenetv1Options = faceApi.SsdMobilenetv1Options({ minConfidence });
+
+  await faceApi.loadSsdMobilenetv1Model(Mobilenetv1Model, SsdMobilenetv1Options);
+  await faceApi.loadFaceLandmarkModel(FaceLandmarkModel)
+  await faceApi.loadFaceRecognitionModel(FaceRecognitionModel)
+}
+
+load().then(onModelLoaded);
 
 const imageObserver = new ImageObserver(onImageInViewport);
 
@@ -77,16 +84,17 @@ async function onMessageResponse(res, wrapper, imgWidth, imgHeight) {
   const img = new Image();
   img.src = res.data;
 
-  faceapi.detect(img, (err, results) => {
-    if (err || !results.length) {
-      return false;
-    }
+  const results = await faceApi.detectAllFaces(img).withFaceLandmarks();
 
-    // only when we detect faces we add a canvas and draw the masks on it
-    const canvas = createCanvas(imgWidth, imgHeight);
-    const ctx = canvas.getContext('2d');
-    setDimensions(wrapper, imgWidth, imgHeight);
-    wrapper.appendChild(canvas);
-    results.forEach(res => drawMask(res.parts, ctx));
-  });
+  // only when we detect faces we add a canvas and draw the masks on it
+  if (!results.length) return;
+
+  const canvas = createCanvas(imgWidth, imgHeight);
+  const ctx = canvas.getContext('2d');
+
+  setDimensions(wrapper, imgWidth, imgHeight);
+
+  wrapper.appendChild(canvas);
+
+  results.forEach(({ landmarks }) => drawMask(landmarks, ctx));
 }

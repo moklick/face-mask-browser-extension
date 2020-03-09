@@ -1,11 +1,13 @@
-export default function drawMask(parts, ctx) {
-  const jawOutline = parts.jawOutline.slice(1, parts.jawOutline.length - 1);
+export default function drawMask(landmarks, ctx) {
+  const jawOutline = landmarks.getJawOutline();
+  const nose = landmarks.getNose();
+  const jaw = jawOutline.slice(1, jawOutline.length - 1);
   const noseTop = {
-    x: (parts.nose[0].x + parts.nose[1].x) / 2,
-    y: (parts.nose[0].y + parts.nose[1].y) / 2
+    x: (nose[0].x + nose[1].x) / 2,
+    y: (nose[0].y + nose[1].y) / 2
   };
-  const jawMaxY = Math.max(...jawOutline.map(p => p.y));
-  const xy = [...jawOutline, noseTop];
+  const jawMaxY = Math.max(...jaw.map(p => p.y));
+  const xy = [...jaw, noseTop];
   const gradient = ctx.createLinearGradient(
     noseTop.x,
     noseTop.y,
