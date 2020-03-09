@@ -22,7 +22,7 @@ In order to try the extension you can load the unpacked version in your Chrome b
 
 1. Check site for images and wrap them with a div
 2. Observe these wrapped images with [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
-3. When an image appears in the viewport, check if there are faces on it using [ml5js face-api](https://learn.ml5js.org/docs/#/reference/face-api)
+3. When an image appears in the viewport, check if there are faces on it using [face-api](https://github.com/justadudewhohacks/face-api.js/)
 4. If there are faces add a canvas to the wrapper and draw the masks with this [drawMask function](https://github.com/moklick/face-mask-browser-extension/blob/master/src/ContentScript/drawMask.js)
 
 ## Development
