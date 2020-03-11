@@ -44,4 +44,5 @@ npm run dev:chrome
 
 ## Thanks
 
-This extension is based on the great [web-extension-starter](https://github.com/abhijithvijayan/web-extension-starter) by [Abhijith Vijayan](https://twitter.com/_abhijithv)
+* 🙌 [Bjorn Stromberg](https://github.com/bjornstar) for his [very helpful contributions](https://github.com/moklick/face-mask-browser-extension/commits?author=bjornstar) to this extension 
+* The code is based on the great [web-extension-starter](https://github.com/abhijithvijayan/web-extension-starter) by [Abhijith Vijayan](https://twitter.com/_abhijithv)
