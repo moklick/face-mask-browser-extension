@@ -35,9 +35,9 @@ function loadModel() {
   return modelLoading;
 }
 
-function loadImage({ height, url, width }) {
+function loadImage(url) {
   return new Promise((resolve, reject) => {
-    const img = new Image(width, height);
+    const img = new Image();
 
     img.onerror = reject;
     img.onload = () => {
@@ -50,13 +50,16 @@ function loadImage({ height, url, width }) {
 
 browser.runtime.onMessage.addListener(({ height, message, url, width }, sender) => {
   if (message === 'detect_faces') {
-    return Promise.all([loadImage({ height, url, width }), loadModel()]).then(([img]) => {
-      return detectAllFaces(img).withFaceLandmarks();
-    }).then(faces => {
-      return faces.map(({ landmarks }) => ({
-        jawOutline: landmarks.getJawOutline().map(({ x, y }) => ({ x, y })),
-        nose: landmarks.getNose().map(({ x, y }) => ({ x, y }))
-      }));
+    return Promise.all([loadImage(url), loadModel()]).then(([img]) => {
+      const scaleX = width / img.width;
+      const scaleY = height / img.height;
+
+      return detectAllFaces(img).withFaceLandmarks().then(faces => {
+        return faces.map(({ landmarks }) => ({
+          jawOutline: landmarks.getJawOutline().map(({ x, y }) => ({ x: x * scaleX, y: y * scaleY })),
+          nose: landmarks.getNose().map(({ x, y }) => ({ x: x * scaleX, y: y * scaleY }))
+        }));
+      });
     });
   }
 });
