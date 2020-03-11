@@ -1,6 +1,4 @@
-export default function drawMask(landmarks, ctx) {
-  const jawOutline = landmarks.getJawOutline();
-  const nose = landmarks.getNose();
+export default function drawMask({ jawOutline, nose }, ctx) {
   const jaw = jawOutline.slice(1, jawOutline.length - 1);
   const noseTop = {
     x: (nose[0].x + nose[1].x) / 2,
