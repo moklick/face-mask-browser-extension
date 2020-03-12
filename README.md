@@ -10,7 +10,7 @@ https://twitter.com/moklick/status/1234421465287680000
 
 ## Example
 
-![](https://user-images.githubusercontent.com/2857535/76514440-2a6e6900-6458-11ea-99c6-86498c5747d7.png)
+![](https://user-images.githubusercontent.com/2857535/76514659-8933e280-6458-11ea-8583-344091796e6c.png)
 
 ## Try it out
 
