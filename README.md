@@ -8,6 +8,10 @@ An extension that puts masks on faces on the internet (only works on Chrome).
 
 https://twitter.com/moklick/status/1234421465287680000
 
+## Example
+
+![](https://user-images.githubusercontent.com/2857535/76514440-2a6e6900-6458-11ea-99c6-86498c5747d7.png)
+
 ## Try it out
 
 In order to try the extension you can load the unpacked version in your Chrome browser by following these steps:
