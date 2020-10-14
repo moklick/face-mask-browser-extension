@@ -1,3 +1,23 @@
+function randomInt(min, max) { // min and max included
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+function getRandomColors(colorized = true) {
+  const blackOrWhiteRandom = Math.random();
+
+  if (blackOrWhiteRandom < 0.3 || !colorized) {
+    return ['#fff', '#ddd'];
+  } else if (blackOrWhiteRandom < 0.4) {
+    return ['#333', '#111'];
+  }
+
+  const hue = Math.random() * 360;
+  const saturation = randomInt(40, 60);
+  const light = randomInt(20, 80);
+
+  return [`hsl(${hue},${saturation}%,${light}%)`, `hsl(${hue},${saturation}%,${light - 10}%)`];
+}
+
 export default function drawMask({ jawOutline, nose }, ctx) {
   const jaw = jawOutline.slice(1, jawOutline.length - 1);
   const noseTop = {
@@ -13,11 +33,13 @@ export default function drawMask({ jawOutline, nose }, ctx) {
     jawMaxY
   );
 
-  gradient.addColorStop(0, '#fff');
-  gradient.addColorStop(1, '#ddd');
+  const [colorTop, colorBottom] = getRandomColors();
+
+  gradient.addColorStop(0, colorTop);
+  gradient.addColorStop(1, colorBottom);
 
   ctx.fillStyle = gradient;
-  ctx.strokeStyle = '#ddd';
+  ctx.strokeStyle = colorBottom;
   ctx.lineWidth = 2;
   ctx.lineCap = 'round';
   ctx.lineJoin = 'round';
