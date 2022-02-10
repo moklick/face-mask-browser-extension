@@ -44,7 +44,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "html-webpack-plugin": "^4.5.0",
     "mini-css-extract-plugin": "^1.0.0",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "postcss-loader": "^4.0.4",
     "prettier": "^2.1.2",
     "resolve-url-loader": "^3.1.1",
